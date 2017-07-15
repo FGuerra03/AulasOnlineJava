@@ -21,6 +21,7 @@ public class CalculadoraIdade extends javax.swing.JFrame {
         initComponents();
         Calendar calendario = Calendar.getInstance();
         int anoAtual = calendario.get(Calendar.YEAR);
+        lblAtual.setText(Integer.toString(anoAtual));
     }
 
     /**
