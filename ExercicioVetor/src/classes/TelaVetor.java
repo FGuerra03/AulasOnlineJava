@@ -5,6 +5,7 @@
  */
 package classes;
 
+import java.util.Arrays;
 import javax.swing.DefaultListModel;
 
 /**
@@ -61,6 +62,11 @@ public class TelaVetor extends javax.swing.JFrame {
         });
 
         btnOrdem.setText("Ordenar");
+        btnOrdem.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdemActionPerformed(evt);
+            }
+        });
 
         jLabel1.setText("vetor");
 
@@ -144,6 +150,15 @@ public class TelaVetor extends javax.swing.JFrame {
             lista.addElement(vetor[i]);
         }
     }//GEN-LAST:event_btnRemoveActionPerformed
+
+    private void btnOrdemActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdemActionPerformed
+        // TODO add your handling code here:
+        Arrays.sort(vetor);
+        lista.removeAllElements();
+        for (int i = 0; i < vetor.length; i++){
+            lista.addElement(vetor[i]);
+        }
+    }//GEN-LAST:event_btnOrdemActionPerformed
 
     /**
      * @param args the command line arguments
