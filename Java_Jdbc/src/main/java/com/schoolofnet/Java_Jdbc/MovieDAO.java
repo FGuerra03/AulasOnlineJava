@@ -41,7 +41,7 @@ public class MovieDAO {
 		String query = "UPDATE movie SET name = ? WHERE id =?";
 		statement = connection.prepareStatement(query);
 		statement.setString(1, movieNew.getName());
-		statement.setInt(2, movieOld.getId());
+		statement.setInt(2, movieNew.getId());
 	}
 	
 	public void remove(Movie movie) throws SQLException {
@@ -49,5 +49,21 @@ public class MovieDAO {
 		statement = connection.prepareStatement(query);
 		statement.setInt(1, movie.getId());
 		statement.execute();
+	}
+	
+	public Movie findById(Integer id) throws SQLException {
+		String query = "SELECT * FROM movie WHERE id = ?";
+		statement = connection.prepareStatement(query);
+		statement.setInt(1, id);
+		
+		ResultSet res = statement.executeQuery();
+		
+		Movie movie = null;
+		
+		while(res.next()) {
+			movie = new Movie(res.getInt("id"), res.getString("name"));
+		}
+		
+		return movie;
 	}
 }
